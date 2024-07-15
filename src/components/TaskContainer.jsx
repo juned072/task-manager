@@ -3,14 +3,22 @@ import TaskCard from "./TaskCard";
 
 const TaskContainer = () => {
   const [inputField, setInputField] = useState("");
+  const [Task, SetTask] = useState([]);
+
+  const handleSubmitTask = (e) => {
+    e.preventDefault();
+
+    SetTask((prevTask) => [inputField, ...prevTask]);
+    setInputField("");
+  };
 
   return (
     <div className="bg-slate-950 h-screen flex justify-center items-center ">
-      <div className="w-[500px] min-h-[500px] bg-white rounded-md p-5">
+      <div className="w-[500px] min-h-[500px] max-h-[500px] overflow-auto bg-white rounded-md p-5">
         <h1 className="text-center font-semibold text-2xl text-gray-800 mb-5">
           Task Manager
         </h1>
-        <form>
+        <form onSubmit={handleSubmitTask}>
           <div className="flex justify-between items-center space-x-2 ">
             <input
               value={inputField}
@@ -26,10 +34,24 @@ const TaskContainer = () => {
               Add
             </button>
           </div>
-          <p className="text-gray-500 py-2">All Tasks</p>
+          {Task.length === 0 ? (
+            <p className="text-gray-400 py-4"> 0 Task Available</p>
+          ) : (
+            <p className="text-gray-500 py-4">All Tasks</p>
+          )}
         </form>
         <div className="mt-5">
-          <TaskCard />
+          {Task.length === 0 ? (
+            <div className="flex justify-center items-center h-60">
+              <p className="text-slate-500">No Task!</p>
+            </div>
+          ) : (
+            <>
+              {Task.map((task, index) => {
+                return <TaskCard key={index} task={task} />;
+              })}
+            </>
+          )}
         </div>
       </div>
     </div>
