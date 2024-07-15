@@ -7,9 +7,10 @@ const TaskContainer = () => {
 
   const handleSubmitTask = (e) => {
     e.preventDefault();
-
-    SetTask((prevTask) => [inputField, ...prevTask]);
-    setInputField("");
+    if (inputField.trim()) {
+      SetTask((prevTask) => [inputField, ...prevTask]);
+      setInputField("");
+    }
   };
 
   return (
