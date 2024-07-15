@@ -13,6 +13,10 @@ const TaskContainer = () => {
     }
   };
 
+  const handleDeleteTask = (id) => {
+    SetTask((prevTask) => prevTask.filter((task) => task.id !== id));
+  };
+
   return (
     <div className="bg-slate-950 h-screen flex justify-center items-center ">
       <div className="w-[500px] min-h-[500px] max-h-[500px] overflow-auto bg-white rounded-md p-5">
@@ -49,7 +53,13 @@ const TaskContainer = () => {
           ) : (
             <>
               {Task.map((task, index) => {
-                return <TaskCard key={index} task={task} />;
+                return (
+                  <TaskCard
+                    key={index}
+                    task={task}
+                    handleDeleteTask={handleDeleteTask}
+                  />
+                );
               })}
             </>
           )}
