@@ -1,17 +1,20 @@
 import React from "react";
 
-const TaskCard = ({ index, task, handleDeleteTask }) => {
+const TaskCard = ({ task, handleDeleteTask, handleEditTask }) => {
   return (
     <div className="flex justify-between items-center p-3 shadow-sm border rounded-md mb-4">
       <div>
-        <p>{task}</p>
+        <p>{task.text}</p>
       </div>
       <div className="flex items-center space-x-2">
-        <button className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-sm">
+        <button
+          onClick={() => handleEditTask(task.id)}
+          className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-sm"
+        >
           Edit
         </button>
         <button
-          onClick={() => handleDeleteTask(index)}
+          onClick={() => handleDeleteTask(task.id)}
           className="p-2 bg-red-500 hover:bg-red-600 text-white rounded-sm"
         >
           Delete
