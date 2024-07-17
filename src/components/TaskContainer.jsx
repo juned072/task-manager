@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TaskCard from "./TaskCard";
+import { GoTasklist } from "react-icons/go";
 
 const TaskContainer = () => {
   const [inputField, setInputField] = useState("");
@@ -42,9 +43,14 @@ const TaskContainer = () => {
   return (
     <div className="bg-slate-950 h-screen flex justify-center items-center">
       <div className="md:min-w-[500px] md:max-w-[500px] w-80 min-h-[500px] max-h-[500px] overflow-auto bg-white rounded-md p-5">
-        <h1 className="text-center font-semibold text-2xl text-gray-800 mb-5">
-          Task Manager
-        </h1>
+        <div className="flex justify-center items-center mb-5">
+          <span className="text-3xl mr-2 text-gray-800">
+            <GoTasklist />
+          </span>
+          <h1 className="text-center font-semibold text-2xl text-gray-800 ">
+            Task Manager
+          </h1>
+        </div>
         <form onSubmit={handleSubmitTask}>
           <div className="flex justify-between items-center space-x-2">
             <input
