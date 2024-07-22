@@ -42,7 +42,7 @@ const TaskContainer = () => {
 
   return (
     <div className="bg-slate-950 h-screen flex justify-center items-center">
-      <div className="md:min-w-[500px] md:max-w-[500px] w-full h-full overflow-auto bg-white rounded-md p-5">
+      <div className="md:min-w-[500px] md:max-w-[500px] md:min-h-[500px] md:max-h-[500px] w-full h-full overflow-auto bg-white rounded-md p-5">
         <div className="flex justify-center items-center mb-5">
           <span className="text-3xl mr-2 text-gray-800">
             <GoTasklist />
